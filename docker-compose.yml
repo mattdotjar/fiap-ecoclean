@@ -9,7 +9,7 @@ services:
       - "8080:8080"  # Mapeamento da porta 8080
     restart: always
     environment:
-      - ASPNETCORE_ENVIRONMENT=Production  # Certifique-se de definir o ambiente adequado
+      - ASPNETCORE_ENVIRONMENT=Production  # Ambiente de produção definido
     depends_on:
       - db  # Certifique-se de que o serviço do app depende do banco de dados
 
@@ -21,7 +21,9 @@ services:
       POSTGRES_DB: ecodb
     ports:
       - "5432:5432"
-    volumes:
-      - ./path/to/your/cert:/etc/ssl/certs
-      - ./path/to/your/cert-key:/etc/ssl/private
     restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U eco_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
