@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ./EcoClean/EcoClean
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"  # Mapeamento da porta 8080
+    restart: always
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production  # Certifique-se de definir o ambiente adequado
+    depends_on:
+      - db  # Certifique-se de que o serviço do app depende do banco de dados
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: eco_user
+      POSTGRES_PASSWORD: eco_pass
+      POSTGRES_DB: ecodb
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./path/to/your/cert:/etc/ssl/certs
+      - ./path/to/your/cert-key:/etc/ssl/private
+    restart: always
