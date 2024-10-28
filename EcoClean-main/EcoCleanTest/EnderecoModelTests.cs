@@ -10,7 +10,7 @@ namespace EcoCleanTest
 {
     public class EnderecoModelTests
     {
-       
+
         [Fact]
         public void EnderecoModel_PropertiesInitializedCorrectly()
         {

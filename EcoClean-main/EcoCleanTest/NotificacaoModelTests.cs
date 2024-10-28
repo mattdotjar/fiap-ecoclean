@@ -10,7 +10,7 @@ namespace EcoCleanTest
     public class NotificacaoModelTests
     {
 
-    
+
         [Fact]
         public void NotificacaoModel_PropertiesInitializedCorrectly()
         {

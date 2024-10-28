@@ -10,7 +10,7 @@ namespace EcoCleanTest
 {
     public class TipoResiduoModelTests
     {
-     
+
         [Fact]
         public void TipoResiduoModel_PropertiesInitializedCorrectly()
         {
